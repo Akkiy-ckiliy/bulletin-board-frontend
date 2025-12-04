@@ -29,7 +29,7 @@ export type SignInResponse = { //型定義(レスポンスの型をあらかじ�
 
 // 上のやり方だとurlに直接パスワードをくっつけててセキュリティ的に危ないので下のやり方のほうが安全。
 export const sign_in = async (user_id: string, pass: string): Promise<SignInResponse> => {
-  const url = `${API_BASE_URL}`; //ベースのurlをつくって
+  const url = `${API_BASE_URL}/auth`; //ベースのurlをつくって
 
   const res = await axios.post<SignInResponse>(url, { user_id, pass }); //idとpassはベースurlと分けてバック側に送る
   return res.data;
