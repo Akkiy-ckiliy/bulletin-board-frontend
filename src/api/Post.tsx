@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export type PostResponse = {
   //型定義(管理番号・名前・メッセージ・日時を管理)
@@ -39,7 +40,7 @@ const post = async (
 
 //セキュリティの問題 part2
 const getList = async (token: string): Promise<PostResponse[]> => {
-  const url = `http://localhost:3001/post?records=10`; // URLからトークンを削除しておくと安心
+  const url = `${API_BASE_URL}/post?records=10`; // URLからトークンを削除しておくと安心
 
   const res = await axios.get<PostResponse[]>(url, {
     headers: { //Authorizationっていう名前のヘッダーを登録(ヘッダーは機密性が高いらしい)

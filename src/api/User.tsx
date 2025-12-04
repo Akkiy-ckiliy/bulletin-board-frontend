@@ -1,4 +1,5 @@
 import axios from "axios"; //ここはHTTPリクエストをやりやすくするところね。
+import { API_BASE_URL } from "../config";
 
 // const getUser = async (user_id: number, token: string) => {
 //   const url = `http://localhost:3001/user/${user_id}?token=${token}`;
@@ -11,7 +12,7 @@ import axios from "axios"; //ここはHTTPリクエストをやりやすくす�
 
 const getUser = async (user_id: number, token: string) => {
   // トークンをURLから除外
-  const url = `http://localhost:3001/user/${user_id}`; 
+  const url = `${API_BASE_URL}/user/${user_id}`; 
 
   const res = await axios.get(url, {
     // ヘッダーにトークンを入れる(postと一緒)

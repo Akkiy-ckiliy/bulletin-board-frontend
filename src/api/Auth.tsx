@@ -1,6 +1,7 @@
 //ここのapiファイルに入ってる3つはバック側に処理をぶん投げてくれるふぁいる。
 
 import axios from "axios"; //HTTPメソッドでのやり取りを快適にするためのやつ。
+import { API_BASE_URL } from "../config";
 
 export type SignInResponse = { //型定義(レスポンスの型をあらかじめ決めておく)
   user_id: string;
@@ -28,7 +29,7 @@ export type SignInResponse = { //型定義(レスポンスの型をあらかじ�
 
 // 上のやり方だとurlに直接パスワードをくっつけててセキュリティ的に危ないので下のやり方のほうが安全。
 export const sign_in = async (user_id: string, pass: string): Promise<SignInResponse> => {
-  const url = "http://localhost:3001/auth"; //ベースのurlをつくって
+  const url = `${API_BASE_URL}`; //ベースのurlをつくって
 
   const res = await axios.post<SignInResponse>(url, { user_id, pass }); //idとpassはベースurlと分けてバック側に送る
   return res.data;
