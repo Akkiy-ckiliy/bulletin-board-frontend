@@ -21,7 +21,7 @@ const post = async (
     message: msg,
   };
   //あとは他と一緒(宛先＆送信)
-  const url = `http://localhost:3001/post?user_id=${user_id}&token=${token}`;
+  const url = `${API_BASE_URL}/post?user_id=${user_id}&token=${token}`;
 
   const res = await axios.post(url, data);
 
