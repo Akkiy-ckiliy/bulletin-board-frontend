@@ -1,14 +1,26 @@
-//reactを立ち上げたらまずここをきれいにする(全削除ではなくreturnの中身とか不要なimport文を消す)
-//基本的にApp.css,logo.svgはいらない。
-
-import SignIn from "./pages/SignIn";//ここはモジュールからコンポーネントを読み込んでいる
+import { useEffect } from "react"; // ★追加
+import axios from "axios";         // ★追加 (npm install axios が必要)
 import { Route, Routes } from "react-router-dom";
-import { UserProvider } from "./providers/UserProvider";
+
+import SignIn from "./pages/SignIn";
 import Main from "./pages/Main";
+import { UserProvider } from "./providers/UserProvider";
 
 function App() {
+  // ▼▼▼ ここにテストコードを追加します ▼▼▼
+  useEffect(() => {
+    // 画面が開かれた瞬間にバックエンドに挨拶しに行く
+    axios.get('http://localhost:3000/test-db')
+      .then(res => {
+        console.log("✅ 接続成功！DBからの返事:", res.data);
+      })
+      .catch(err => {
+        console.error("❌ 接続エラー:", err);
+      });
+  }, []);
+  // ▲▲▲ ここまで ▲▲▲
+
   return (
-    //ここの下に画面に読み込ませるファイルのコンポーネントを書く。
     <div className="App">
       <UserProvider>
         <Routes>
