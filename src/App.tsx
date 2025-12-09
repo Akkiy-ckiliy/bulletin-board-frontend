@@ -10,7 +10,7 @@ function App() {
   // ▼▼▼ ここにテストコードを追加します ▼▼▼
   useEffect(() => {
     // 画面が開かれた瞬間にバックエンドに挨拶しに行く
-    axios.get('http://localhost:3000/test-db')
+    axios.get('https://bulletin-board-backend-72yv.onrender.com/test-db')
       .then(res => {
         console.log("✅ 接続成功！DBからの返事:", res.data);
       })
