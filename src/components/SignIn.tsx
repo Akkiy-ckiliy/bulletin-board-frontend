@@ -30,6 +30,11 @@ export default function SignIn() {
         token: ret.token,
       });
 
+      // ★追加 2. ローカルストレージにも保存（リロード対策）★
+      localStorage.setItem("auth_token", ret.token);
+      localStorage.setItem("user_id", ret.user_id);
+      // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
       navigate("/main"); //メイン画面に移動
     } else {
       alert("ログインに失敗しました。IDかパスワードが違います。");
